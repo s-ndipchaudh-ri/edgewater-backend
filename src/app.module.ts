@@ -7,6 +7,7 @@ import * as dotenv from 'dotenv';
 import * as mongoose from 'mongoose';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
+import { WebSocketModule } from './websocket/websocket.module';
 
 dotenv.config();
 
@@ -15,6 +16,7 @@ dotenv.config();
     MongooseModule.forRoot(process.env.MONGO_URI_LOCAL),
     UserModule,
     AuthModule,
+    WebSocketModule,
   ],
   controllers: [AppController],
   providers: [AppService],
