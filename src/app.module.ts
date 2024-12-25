@@ -8,6 +8,7 @@ import * as mongoose from 'mongoose';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { WebSocketModule } from './websocket/websocket.module';
+import { DataHostModule } from './datahost/datahost.module';
 
 dotenv.config();
 
@@ -17,6 +18,7 @@ dotenv.config();
     UserModule,
     AuthModule,
     WebSocketModule,
+    DataHostModule,
   ],
   controllers: [AppController],
   providers: [AppService],
