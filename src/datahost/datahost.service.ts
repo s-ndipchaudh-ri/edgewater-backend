@@ -31,7 +31,6 @@ export class DataHostService {
     for (const pair of user.pairs) {
       const key = `${pair}`;
       const value = await this.redisClient.get(key);
-
       if (value) {
         client.emit('data', JSON.stringify({ pair, data: JSON.parse(value) }));
       }
