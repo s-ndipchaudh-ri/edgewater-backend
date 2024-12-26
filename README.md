@@ -40,6 +40,7 @@ This repository contains the backend implementation for a single-page applicatio
  Prerequisites
 
 - Node.js (v18 or later)
+- Nestjs
 - npm or yarn
 - MongoDB (v5 or later)
 - Redis (v6 or later)
@@ -63,6 +64,7 @@ This repository contains the backend implementation for a single-page applicatio
    JWT_SECRET=your_jwt_secret
    REDIS_URL=redis://localhost:6379
    COINBASE_API_URL=wss://ws-feed.pro.coinbase.com
+   TIME=1000
    ```
 
  Usage
