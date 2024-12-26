@@ -15,7 +15,12 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Post('register')
-  async register(@Body() body: Partial<User>): Promise<User> {
+  async register(@Body() body: Partial<User>): Promise<{
+    _id: any;
+    username: string;
+    access_token: string;
+    pairs: string[];
+  }> {
     try {
       return await this.authService.register(body);
     } catch (error) {

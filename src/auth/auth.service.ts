@@ -13,7 +13,12 @@ export class AuthService {
   ) {}
 
   // Register a new user
-  async register(userDto: Partial<User>): Promise<User> {
+  async register(userDto: Partial<User>): Promise<{
+    _id: any;
+    username: string;
+    access_token: string;
+    pairs: string[];
+  }> {
     // Check if the email already exists
     const existingUser = await this.userModel
       .findOne({ email: userDto.email })
@@ -27,7 +32,17 @@ export class AuthService {
 
     // Save the user
     const user = new this.userModel({ ...userDto, password: hashedPassword });
-    return user.save();
+    // await user.save()
+    await user.save();
+    const payload = { username: user.username, sub: user._id };
+    const accessToken = this.jwtService.sign(payload);
+    return {
+      _id: user._id,
+      username: user.username,
+      access_token: accessToken,
+      pairs: user.pairs,
+    };
+    
   }
 
   // Validate user for login

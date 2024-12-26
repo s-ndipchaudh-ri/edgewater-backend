@@ -15,7 +15,7 @@ export class User extends Document {
   @Prop({ default: Date.now })
   createdAt: Date;
 
-  @Prop({ type: [String], default: [] })
+  @Prop({ type: [String], default: ["BTC-USD"] })
   pairs: string[];
 }
 
