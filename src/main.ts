@@ -9,11 +9,7 @@ async function bootstrap() {
     logger: ['log', 'error', 'warn', 'debug', 'verbose'], // Enable all log levels
   });
   // Enable CORS
-  app.enableCors({
-    origin: '*', // Allow all origins (customize as needed)
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    allowedHeaders: 'Content-Type, Accept',
-  });
+  app.enableCors();
   // Use body-parser middleware
   app.use(bodyParser.json({ limit: '10mb' })); // Parse JSON requests up to 10MB
   app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' })); // Parse URL-encoded requests

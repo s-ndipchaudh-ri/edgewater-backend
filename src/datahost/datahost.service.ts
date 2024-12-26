@@ -27,12 +27,28 @@ export class DataHostService {
     }
 
     client.emit(JSON.stringify({ message: 'No pairs found for this user' }));
-
+    if (user.pairs.length == 0) {
+      client.emit(
+        'data',
+        JSON.stringify({
+          pair: 'pair',
+          allPairs: user.pairs,
+          data: {},
+        }),
+      );
+    }
     for (const pair of user.pairs) {
       const key = `${pair}`;
       const value = await this.redisClient.get(key);
       if (value) {
-        client.emit('data', JSON.stringify({ pair, data: JSON.parse(value) }));
+        client.emit(
+          'data',
+          JSON.stringify({
+            pair,
+            allPairs: user.pairs,
+            data: JSON.parse(value),
+          }),
+        );
       }
     }
   }

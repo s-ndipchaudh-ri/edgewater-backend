@@ -58,10 +58,12 @@ export class AuthService {
   }
 
   // Generate JWT token
-  async login(userDto: {
-    _id: any;
-    username: any;
-  }): Promise<{ _id: string; username: string; access_token: string }> {
+  async login(userDto: { _id: any; username: any; pairs: string[] }): Promise<{
+    _id: string;
+    username: string;
+    access_token: string;
+    pairs: string[];
+  }> {
     try {
       // Validate user credentials
       const user = userDto;
@@ -72,6 +74,7 @@ export class AuthService {
         _id: user._id,
         username: user.username,
         access_token: accessToken,
+        pairs: user.pairs,
       };
     } catch (error) {
       console.error('Error in login:', error.message);

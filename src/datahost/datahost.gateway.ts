@@ -8,7 +8,8 @@ import {
 } from '@nestjs/websockets';
 import { Server, Socket } from 'socket.io';
 import { DataHostService } from './datahost.service';
-
+import * as dotenv from 'dotenv';
+dotenv.config();
 @WebSocketGateway({
   cors: {
     origin: '*', // Allow all origins
@@ -45,7 +46,7 @@ export class DataHostGateway implements OnGatewayInit {
     // Start periodic streaming
     const interval = setInterval(async () => {
       await this.streamDataForUser(userId, client);
-    }, 50); // Stream every 50m second
+    }, parseInt(process.env.TIME)); // Stream every 50m second
 
     // Save the interval reference to avoid duplicates
     this.activeIntervals.set(client.id, interval);
