@@ -49,7 +49,7 @@ This repository contains the backend implementation for a single-page applicatio
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/edgewater-backend.git
+   [git clone https://github.com/yourusername/edgewater-backend.git](https://github.com/s-ndipchaudh-ri/edgewater-backend)
    cd edgewater-backend
    ```
 
